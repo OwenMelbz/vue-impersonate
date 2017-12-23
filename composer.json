@@ -1,10 +1,26 @@
 {
-    "name": "owen/vue-impersonate",
+    "name": "owenmelbz/vue-impersonate",
+    "description": "Laravel 5.5+ helper and VueJS 2 component for lab404/laravel-impersonate",
+    "keywords": ["laravel", "pwa", "manifest"],
+    "license": "MIT",
     "authors": [
         {
-            "name": "Owen",
+            "name": "Owen Melbourne",
             "email": "owenmelbz@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "illuminate/support": "5.*",
+        "lab404/laravel-impersonate": "1.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "OwenMelbz\\VueImpersonate\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": ["OwenMelbz\\VueImpersonate\\VueImpersonateServiceProvider"]
+        }
+    }
 }
