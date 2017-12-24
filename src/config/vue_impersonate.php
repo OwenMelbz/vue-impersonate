@@ -19,7 +19,7 @@
     /*
     |--------------------------------------------------------------------------
     | If you want to use a custom route to return the user list, place the url
-    | here and we'll use it instead. defult (null)
+    | here and we'll use it instead. default (null)
     |--------------------------------------------------------------------------
     */
 
