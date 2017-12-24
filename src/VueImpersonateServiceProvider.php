@@ -26,19 +26,20 @@ class VueImpersonateServiceProvider extends ServiceProvider {
     {
         // Publish the config
         $this->publishes([
-            __DIR__ . '/config/config.php' => config_path($this->packageName . '.php'),
+            __DIR__ . '/config/vue_impersonate.php' => config_path($this->packageName . '.php'),
+            __DIR__ . '/resources/views/vue-impersonate.blade.php' => $this->resource_path('vue-impersonate.blade.php'),
         ]);
 
-        // Load the routes
-        $this->loadRoutesFromLegacy(__DIR__ . '/routes.php');
 
         // Load the views
-        //$this->loadViewsFrom(__DIR__ . '/resources/views', 'pwa_manifest');
+        $this->loadViewsFrom(__DIR__.'/resources/views', 'vue_impersonate');
 
-        // We load the blade directive for nofollow/noindex meta tag
-        Blade::directive('VueImpersonate', function () {
-            return "<?php echo (new \OwenMelbz\VueImpersonate\VueImpersonateMeta)->render(); ?>";
-        });
+        // Load the routes
+        if (config('vue_impersonate.custom_route') === null) {
+            $this->loadRoutesFromLegacy(__DIR__ . '/routes.php');
+        }
+
+        $this->loadBladeDirectives();
     }
 
     /**
@@ -48,7 +49,7 @@ class VueImpersonateServiceProvider extends ServiceProvider {
      */
     public function register()
     {
-        //$this->mergeConfigFrom( __DIR__.'/config/config.php', $this->packageName);
+        $this->mergeConfigFrom( __DIR__.'/config/vue_impersonate.php', $this->packageName);
     }
 
     protected function resource_path($filename)
@@ -60,13 +61,20 @@ class VueImpersonateServiceProvider extends ServiceProvider {
         return app_path('resources/' . trim($filename, '/'));
     }
 
+    protected function loadBladeDirectives()
+    {
+        Blade::directive('vueImpersonate', function () {
+            return "<?php echo (new \OwenMelbz\VueImpersonate\Services\VueImpersonateService)->render(); ?>";
+        });
+    }
+
     protected function loadRoutesFromLegacy($path)
     {
         if (method_exists($this, 'loadRoutesFrom')) {
             return $this->loadRoutesFrom($path);
         }
 
-        if (! $this->app->routesAreCached()) {
+        if (!$this->app->routesAreCached()) {
             require $path;
         }
     }
