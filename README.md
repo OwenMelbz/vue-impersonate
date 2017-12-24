@@ -16,8 +16,6 @@ This package adds a really simple frontend component written as a self contained
 
 4. You must then include the component in your javascript bundle, typically achieved from within an entry point such as `app.js` e.g `Vue.component('vue-impersonate', require('./components/vue-impersonate.vue'));`
 
-If you want to rename the component from `vue-impersonate` you must publish the config file via `php artisan vendor:publish` and change it within the config under the `custom_directive` param.
-
 5. Once published you should make sure you've set up laravel-impersonate correctly by including the correct traits, and methods and routes to allow impersonating.
 
 6. Once laravel-impersonate is set up you should include the blade directive within your template `@vueImpersonate` this should be housed within your vuejs container e.g `#app` - it will only render for users who possess the `canImpersonate` permissions.
@@ -27,6 +25,10 @@ If you want to rename the component from `vue-impersonate` you must publish the 
 ### Display name
 
 You can change what is displayed in the dropdown by changing the `display_name_field` from within the published config - you can use accessors/mutators here or normal database columns.
+
+### Custom vue directive
+
+If you want to rename the component from `vue-impersonate` you must publish the config file via `php artisan vendor:publish` and change it within the config under the `custom_directive` param.
 
 ### Custom user provider
 
