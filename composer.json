@@ -1,7 +1,7 @@
 {
     "name": "owenmelbz/vue-impersonate",
     "description": "Laravel 5.5+ helper and VueJS 2 component for lab404/laravel-impersonate",
-    "keywords": ["laravel", "pwa", "manifest"],
+    "keywords": ["laravel", "vuejs", "impersonate", "lab404"],
     "license": "MIT",
     "authors": [
         {
