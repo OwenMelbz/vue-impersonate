@@ -26,7 +26,7 @@ This package adds a really simple frontend component written as a self contained
 
 You can change what is displayed in the dropdown by changing the `display_name_field` from within the published config - you can use accessors/mutators here or normal database columns.
 
-### Custom vue directive
+### Custom vue directive
 
 If you want to rename the component from `vue-impersonate` you must publish the config file via `php artisan vendor:publish` and change it within the config under the `custom_directive` param.
 
