@@ -112,7 +112,9 @@
         },
 
         mounted() {
-            // this.toggleMenu();
+            if (this.isImpersonating) {
+                this.toggleMenu();
+            }
         },
 
         methods: {
