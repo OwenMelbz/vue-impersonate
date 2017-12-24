@@ -14,11 +14,7 @@ This package adds a really simple frontend component written as a self contained
 
 3. Theres 3 publishable components - the only `required` component is the javascript which you can publish with `php artisan vendor:publish` then select `vue-impersonate-javascript (required)` This will copy the .vue component into `resources/js/components/vue-impersonate.vue` - feel free to move this.
 
-4. You must then include the component in your javascript bundle, typically achieved from within an entry point such as `app.js` e.g
-
-```js
-Vue.component('vue-impersonate', require('./components/vue-impersonate.vue'));
-```
+4. You must then include the component in your javascript bundle, typically achieved from within an entry point such as `app.js` e.g `Vue.component('vue-impersonate', require('./components/vue-impersonate.vue'));`
 
 If you want to rename the component from `vue-impersonate` you must publish the config file via `php artisan vendor:publish` and change it within the config under the `custom_directive` param.
 
