@@ -2,5 +2,6 @@
 
 Route::get(
     '/impersonate/users',
-    'OwenMelbz\VueImpersonate\Controllers\VueImpersonateController'
-)->name('impersonate.users');
+    'OwenMelbz\VueImpersonate\Controllers\VueImpersonateController')
+->name('impersonate.users')
+->middleware('web');

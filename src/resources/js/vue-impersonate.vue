@@ -140,6 +140,8 @@
                 const xhr = new XMLHttpRequest();
 
                 xhr.open('GET', this.routes.users);
+
+                xhr.withCredentials = true;
                 xhr.setRequestHeader('X-CSRF-TOKEN', document.head.querySelector('meta[name="csrf-token"]').content)
 
                 xhr.onload = response => {
