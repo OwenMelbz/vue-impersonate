@@ -23,8 +23,19 @@ class VueImpersonateService {
         return collect([
             'take' => route('impersonate', '@userid'),
             'leave' => route('impersonate.leave'),
-            'users' => route('impersonate.users'),
+            'users' => $this->getUsersRoute(),
         ]);
+    }
+
+    public function getUsersRoute()
+    {
+        if (config('vue_impersonate.custom_route')) {
+            return asset(
+                config('vue_impersonate.custom_route')
+            );
+        }
+
+        return route('impersonate.users');
     }
 
     public function getImpersonatable()
@@ -48,7 +59,8 @@ class VueImpersonateService {
         if (optional(request()->user())->canImpersonate()) {
             return view('vue_impersonate::vue-impersonate')
             ->with('is_impersonating', $this->isImpersonating())
-            ->with('routes', $this->getRoutes());
+            ->with('routes', $this->getRoutes())
+            ->with('component_name', config('vue_impersonate.custom_directive'));
         }
     }
 

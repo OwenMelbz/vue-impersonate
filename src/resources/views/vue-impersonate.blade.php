@@ -1,4 +1,4 @@
-<vue-impersonator
+<{{ $component_name }}
     :is-impersonating="{{ $is_impersonating ? 'true' : 'false' }}"
     :routes="{{ $routes }}"
-></vue-impersonator>
+></{{ $component_name }}>

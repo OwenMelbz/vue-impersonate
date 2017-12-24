@@ -84,6 +84,7 @@
 </style>
 
 <script>
+
     export default {
 
         props: {
@@ -102,11 +103,11 @@
 
         data() {
             return {
-                show_menu: false,
-                loaded: false,
-                failed: false,
                 users: [],
                 user: null,
+                loaded: false,
+                failed: false,
+                show_menu: false,
             }
         },
 
@@ -134,7 +135,6 @@
             },
 
             updateUserList() {
-
                 const xhr = new XMLHttpRequest();
 
                 xhr.open('GET', this.routes.users);
@@ -166,4 +166,5 @@
 
         }
     }
+
 </script>
