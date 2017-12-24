@@ -27,8 +27,17 @@ class VueImpersonateServiceProvider extends ServiceProvider {
         // Publish the config
         $this->publishes([
             __DIR__ . '/config/vue_impersonate.php' => config_path($this->packageName . '.php'),
-            __DIR__ . '/resources/views/vue-impersonate.blade.php' => $this->resource_path('vue-impersonate.blade.php'),
-        ]);
+            __DIR__ . '/resources/views/vue-impersonate.blade.php' => $this->resource_path('views/vue-impersonate.blade.php'),
+            __DIR__ . '/resources/js/vue-impersonate.vue' => $this->resource_path('js/vue-impersonate.vue'),
+        ], 'vue-impersonate-all');
+
+        $this->publishes([
+            __DIR__ . '/resources/js/vue-impersonate.vue' => $this->resource_path('js/vue-impersonate.vue'),
+        ], 'vue-impersonate-javascript (required)');
+
+        $this->publishes([
+            __DIR__ . '/config/vue_impersonate.php' => config_path($this->packageName . '.php'),
+        ], 'vue-impersonate-config');
 
 
         // Load the views
