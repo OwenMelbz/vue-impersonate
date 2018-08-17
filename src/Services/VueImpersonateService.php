@@ -46,6 +46,8 @@ class VueImpersonateService {
         return $model::all()->filter(function ($user) {
             return $user->canBeImpersonated();
         })
+        ->sortBy($displayField)
+        ->values()
         ->transform(function ($user) use ($displayField) {
             return [
                 'id' => $user->getKey(),
